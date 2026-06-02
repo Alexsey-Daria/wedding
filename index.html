@@ -56,12 +56,14 @@
             padding: 20px;
         }
 
+        /* УВЕЛИЧЕННЫЙ ШРИФТ ДЛЯ ИМЕНИ ГОСТЯ */
         .personal-greeting {
-            font-size: 1.8rem;
+            font-size: 2.8rem;
             color: var(--primary);
             margin-bottom: 10px;
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
+            line-height: 1.1;
         }
 
         .hero h1 {
@@ -185,6 +187,8 @@
         }
 
         @media (max-width: 480px) {
+            /* Адаптация размера имени для телефонов */
+            .personal-greeting { font-size: 2.2rem; }
             .hero h1 { font-size: 3.5rem; }
             .time-box { width: 60px; height: 70px; }
             .time-box span { font-size: 1.5rem; }
@@ -213,6 +217,12 @@
             <div class="time-box"><span id="minutes">00</span><p>Минут</p></div>
             <div class="time-box"><span id="seconds">00</span><p>Секунд</p></div>
         </div>
+    </section>
+
+    <!-- НОВЫЙ БЛОК: ПОЖЕЛАНИЯ -->
+    <section class="fade-in" style="background: #fff; padding: 60px 20px;">
+        <h2>Пожелания</h2>
+        <p>Мы очень ценим ваше внимание и заботу! Пожалуйста, просим вас не утруждать себя выбором цветочных композиций — к сожалению, мы не успеем в полной мере насладиться их красотой. Главный и самый ценный подарок для нас — это ваше присутствие и искренние улыбки!</p>
     </section>
 
     <section class="fade-in">
@@ -323,6 +333,7 @@
             const formData = new FormData(document.getElementById('rsvp-form'));
             const data = Object.fromEntries(formData.entries());
             
+            // СЮДА НУЖНО ВСТАВИТЬ ВАШУ ССЫЛКУ ИЗ GOOGLE SCRIPTS (ВМЕСТО YOUR_GOOGLE_SCRIPT_MACRO_URL)
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwuYNEvtoTv1y-XCo4M52swS4W-eDTuUuh9RMDjCdosOtGogzzcdcmxNOesZxYOX7bc/exec'; 
 
             if (scriptURL === 'YOUR_GOOGLE_SCRIPT_MACRO_URL') {
