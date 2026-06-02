@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свадьба Алексея и Дарьи</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Теплые закатные цвета */
+            --primary: #683B2B; /* Глубокий терракотово-каштановый */
+            --accent: #D98A44; /* Золотисто-оранжевый (закатный) */
+            --bg-light: #FCF8F5; /* Очень мягкий кремовый фон */
+            --text-main: #4A3C35; /* Теплый темно-серый для обычного текста */
+            --text-muted: #96867D; /* Приглушенный теплый оттенок */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .cursive {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Фото на весь экран с теплым градиентом */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(252, 248, 245, 0.4), rgba(252, 248, 245, 0.85)), url('14031.jpg') center/cover no-repeat;
+            padding: 20px;
+        }
+
+        .personal-greeting {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--primary);
+            margin: 10px 0;
+            line-height: 1;
+        }
+
+        .hero p.cursive {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .hero .date {
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-top: 20px;
+            border-top: 1px solid var(--primary);
+            border-bottom: 1px solid var(--primary);
+            padding: 10px 0;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .time-box {
+            background: #fff;
+            width: 70px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(104, 59, 43, 0.08); /* Теплая тень */
+        }
+        .time-box span {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .time-box p {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        form {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(104, 59, 43, 0.05);
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            border-bottom: 2px solid #ddd;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-bottom-color: var(--primary);
+        }
+        button {
+            background-color: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #4A2A1E;
+        }
+        
+        .map-wrapper {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 3.5rem; }
+            .time-box { width: 60px; height: 70px; }
+            .time-box span { font-size: 1.5rem; }
+            form { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero fade-in">
+        <div class="personal-greeting" id="guest-greeting"></div>
+        <p class="cursive">Приглашаем на нашу свадьбу</p>
+        
+        <h1>Алексей<br>&<br>Дарья</h1>
+        
+        <div class="date"><strong>08 . 07 . 2026</strong></div>
+    </div>
+
+    <section class="fade-in">
+        <h2>Ждем вас</h2>
+        <p>Мы будем очень рады разделить с вами этот счастливый день! Впереди много радости, танцев и прекрасных моментов.</p>
+        
+        <div class="countdown" id="timer" style="margin-top: 40px;">
+            <div class="time-box"><span id="days">00</span><p>Дней</p></div>
+            <div class="time-box"><span id="hours">00</span><p>Часов</p></div>
+            <div class="time-box"><span id="minutes">00</span><p>Минут</p></div>
+            <div class="time-box"><span id="seconds">00</span><p>Секунд</p></div>
+        </div>
+    </section>
+
+    <section class="fade-in">
+        <h2>Дресс-код</h2>
+        <p>Мы не устанавливаем строгих правил и цветовых рамок для дресс-кода. Главное для нас — ваше присутствие и отличное настроение! Будем рады видеть вас в том, в чем вы будете чувствовать себя комфортно и по-праздничному красиво.</p>
+    </section>
+
+    <section class="fade-in" style="background: #fff; padding: 60px 20px;">
+        <h2>Локация и время</h2>
+        <p><strong>Гастробар «Ван Ваныч»</strong><br>г. Чита, ул. Петровско-Заводская, 56</p>
+        <p style="font-size: 1.2rem; color: var(--primary); margin: 15px 0;"><strong>Сбор гостей в 17:00</strong></p>
+        <div class="map-wrapper">
+            <iframe src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%92%D0%B0%D0%BD+%D0%92%D0%B0%D0%BD%D1%8B%D1%87+%D0%A7%D0%B8%D1%82%D0%B0" width="100%" height="300" frameborder="0" allowfullscreen="true"></iframe>
+        </div>
+    </section>
+
+    <section class="fade-in">
+        <h2>Анкета гостя</h2>
+        <p style="margin-bottom: 30px;">Пожалуйста, ответьте на пару вопросов до 10 июня 2026 года.</p>
+        
+        <form id="rsvp-form" onsubmit="submitForm(event)">
+            <div class="form-group">
+                <label>Ваши Имя и Фамилия</label>
+                <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+            </div>
+
+            <div class="form-group">
+                <label>Сможете ли вы присутствовать?</label>
+                <select id="attendance" name="attendance" required>
+                    <option value="" disabled selected>Выберите вариант...</option>
+                    <option value="Да">Да, с удовольствием!</option>
+                    <option value="Нет">К сожалению, нет</option>
+                    <option value="Позже">Сообщу точнее позже</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Ваши спутники (если придете не одни)</label>
+                <input type="text" name="plus-one" placeholder="Например: жена Анна и сын Марк">
+            </div>
+
+            <div class="form-group">
+                <label>Предпочтения по напиткам</label>
+                <select name="drinks">
+                    <option value="" disabled selected>Выберите напиток...</option>
+                    <option value="Вино белое">Вино белое</option>
+                    <option value="Вино красное">Вино красное</option>
+                    <option value="Шампанское">Шампанское</option>
+                    <option value="Водка">Водка</option>
+                    <option value="Виски">Виски</option>
+                    <option value="Коньяк">Коньяк</option>
+                    <option value="Безалкогольные напитки">Безалкогольные напитки</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submit-btn">Отправить ответ</button>
+        </form>
+        <div id="success-message" style="display:none; margin-top: 20px; color: var(--primary); padding: 15px; border: 1px solid var(--primary);">
+            Спасибо за ответ! Ждем встречи!
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            if (guestName) {
+                document.getElementById('guest-greeting').innerText = guestName + '!';
+                let cleanName = guestName.replace(/Дорогой |Дорогая |Дорогие |Уважаемый |Уважаемая |Уважаемые /ig, '');
+                document.getElementById('name').value = cleanName;
+            }
+        });
+
+        // Таймер на 17:00
+        const weddingDate = new Date("Jul 8, 2026 17:00:00").getTime();
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "<h3 style='color:var(--primary)'>Свадьба началась!</h3>";
+                return;
+            }
+
+            document.getElementById("days").innerHTML = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+        }, 1000);
+
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = 'Отправка...';
+            btn.disabled = true;
+
+            const formData = new FormData(document.getElementById('rsvp-form'));
+            const data = Object.fromEntries(formData.entries());
+            
+            const scriptURL = 'YOUR_GOOGLE_SCRIPT_MACRO_URL'; 
+
+            if (scriptURL === 'YOUR_GOOGLE_SCRIPT_MACRO_URL') {
+                setTimeout(() => {
+                    document.getElementById('rsvp-form').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                }, 1000);
+                return;
+            }
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new URLSearchParams(data), 
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(() => {
+                document.getElementById('rsvp-form').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Ошибка!', error.message);
+                btn.innerHTML = 'Ошибка. Попробуйте еще раз';
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
