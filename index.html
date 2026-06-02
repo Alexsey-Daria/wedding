@@ -56,7 +56,6 @@
             padding: 20px;
         }
 
-        /* УВЕЛИЧЕННЫЙ ШРИФТ ДЛЯ ИМЕНИ ГОСТЯ */
         .personal-greeting {
             font-size: 2.8rem;
             color: var(--primary);
@@ -114,7 +113,7 @@
             flex-direction: column;
             justify-content: center;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(104, 59, 43, 0.08); /* Теплая тень */
+            box-shadow: 0 5px 15px rgba(104, 59, 43, 0.08);
         }
         .time-box span {
             font-size: 1.8rem;
@@ -145,7 +144,9 @@
             font-size: 0.9rem;
             color: var(--text-main);
         }
-        input, select {
+        
+        /* Добавлен тег textarea для большого поля ввода */
+        input, select, textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -158,10 +159,17 @@
             font-family: 'Montserrat', sans-serif;
             transition: border-color 0.3s;
         }
-        input:focus, select:focus {
+        
+        textarea {
+            resize: vertical; /* Позволяет растягивать поле вниз */
+            min-height: 60px;
+        }
+        
+        input:focus, select:focus, textarea:focus {
             outline: none;
             border-bottom-color: var(--primary);
         }
+        
         button {
             background-color: var(--primary);
             color: #fff;
@@ -187,7 +195,6 @@
         }
 
         @media (max-width: 480px) {
-            /* Адаптация размера имени для телефонов */
             .personal-greeting { font-size: 2.2rem; }
             .hero h1 { font-size: 3.5rem; }
             .time-box { width: 60px; height: 70px; }
@@ -219,7 +226,6 @@
         </div>
     </section>
 
-    <!-- БЛОК: ПОЖЕЛАНИЯ -->
     <section class="fade-in" style="background: #fff; padding: 60px 20px;">
         <h2>Пожелания</h2>
         <p>Мы очень ценим ваше внимание и заботу! Пожалуйста, не утруждайте себя выбором цветочных композиций — к сожалению, мы не успеем в полной мере насладиться их красотой. Если же вы хотите порадовать нас ещё чем-то, мы будем благодарны за небольшой вклад в нашу первую семейную копилку. Но главный и самый ценный подарок для нас — это ваше присутствие и искренние улыбки!</p>
@@ -274,9 +280,13 @@
                     <option value="Водка">Водка</option>
                     <option value="Виски">Виски</option>
                     <option value="Коньяк">Коньяк</option>
-                    <option value="Джин">Джин</option>
                     <option value="Безалкогольные напитки">Безалкогольные напитки</option>
                 </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Дополнительная информация (здесь можно указать свои пожелания, предпочтения по напиткам ваших спутников и т.д.)</label>
+                <textarea name="additional" placeholder="Ваш комментарий..."></textarea>
             </div>
 
             <button type="submit" id="submit-btn">Отправить ответ</button>
@@ -301,12 +311,10 @@
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
             if (guestName) {
-                // Выводим приветствие
                 document.getElementById('guest-greeting').innerText = guestName + '!';
             }
         });
 
-        // Таймер на 17:00
         const weddingDate = new Date("Jul 8, 2026 17:00:00").getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
@@ -333,7 +341,6 @@
             const formData = new FormData(document.getElementById('rsvp-form'));
             const data = Object.fromEntries(formData.entries());
             
-            // Интегрированная ссылка из Google Scripts
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwuYNEvtoTv1y-XCo4M52swS4W-eDTuUuh9RMDjCdosOtGogzzcdcmxNOesZxYOX7bc/exec'; 
 
             if (scriptURL === 'YOUR_GOOGLE_SCRIPT_MACRO_URL') {
