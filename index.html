@@ -219,7 +219,7 @@
         </div>
     </section>
 
-    <!-- НОВЫЙ БЛОК: ПОЖЕЛАНИЯ -->
+    <!-- БЛОК: ПОЖЕЛАНИЯ -->
     <section class="fade-in" style="background: #fff; padding: 60px 20px;">
         <h2>Пожелания</h2>
         <p>Мы очень ценим ваше внимание и заботу! Пожалуйста, просим вас не утруждать себя выбором цветочных композиций — к сожалению, мы не успеем в полной мере насладиться их красотой. Главный и самый ценный подарок для нас — это ваше присутствие и искренние улыбки!</p>
@@ -241,7 +241,7 @@
 
     <section class="fade-in">
         <h2>Анкета гостя</h2>
-        <p style="margin-bottom: 30px;">Пожалуйста, ответьте на пару вопросов до 10 июня 2026 года.</p>
+        <p style="margin-bottom: 30px;">Пожалуйста, ответьте на пару вопросов до 15 июня 2026 года.</p>
         
         <form id="rsvp-form" onsubmit="submitForm(event)">
             <div class="form-group">
@@ -300,9 +300,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
             if (guestName) {
+                // Выводим приветствие
                 document.getElementById('guest-greeting').innerText = guestName + '!';
-                let cleanName = guestName.replace(/Дорогой |Дорогая |Дорогие |Уважаемый |Уважаемая |Уважаемые /ig, '');
-                document.getElementById('name').value = cleanName;
             }
         });
 
@@ -333,7 +332,7 @@
             const formData = new FormData(document.getElementById('rsvp-form'));
             const data = Object.fromEntries(formData.entries());
             
-            // СЮДА НУЖНО ВСТАВИТЬ ВАШУ ССЫЛКУ ИЗ GOOGLE SCRIPTS (ВМЕСТО YOUR_GOOGLE_SCRIPT_MACRO_URL)
+            // Интегрированная ссылка из Google Scripts
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwuYNEvtoTv1y-XCo4M52swS4W-eDTuUuh9RMDjCdosOtGogzzcdcmxNOesZxYOX7bc/exec'; 
 
             if (scriptURL === 'YOUR_GOOGLE_SCRIPT_MACRO_URL') {
