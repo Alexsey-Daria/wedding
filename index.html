@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Свадьба Алексея и Дарьи</title>
     
+    <!-- СПЕЦИАЛЬНЫЕ ТЕГИ ДЛЯ КРАСИВОЙ ССЫЛКИ В МЕССЕНДЖЕРАХ -->
     <meta name="description" content="Приглашаем вас разделить с нами этот счастливый день! 8 июля 2026 года, г. Чита.">
     <meta property="og:title" content="Свадьба Алексея и Дарьи">
     <meta property="og:description" content="Приглашаем вас разделить с нами этот счастливый день! Ждем вас 8 июля 2026 года.">
@@ -17,7 +18,7 @@
         :root {
             /* Теплые закатные цвета */
             --primary: #683B2B; /* Глубокий терракотово-каштановый */
-            --accent: #D98A44; /* Золотисто-оранжевый (закатный) */
+            --accent: #D98A44;  /* Золотисто-оранжевый (закатный) */
             --bg-light: #FCF8F5; /* Очень мягкий кремовый фон */
             --text-main: #4A3C35; /* Теплый темно-серый для обычного текста */
             --text-muted: #96867D; /* Приглушенный теплый оттенок */
@@ -287,7 +288,6 @@
                     <option value="Водка">Водка</option>
                     <option value="Виски">Виски</option>
                     <option value="Коньяк">Коньяк</option>
-                    <option value="Коньяк">Джин</option>
                     <option value="Безалкогольные напитки">Безалкогольные напитки</option>
                 </select>
             </div>
@@ -317,8 +317,10 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const guestName = urlParams.get('to');
+            let guestName = urlParams.get('to');
             if (guestName) {
+                // ОЧИЩАЕМ ИМЯ ОТ ТЕХНИЧЕСКИХ СИМВОЛОВ БРАУЗЕРА (%20 и +)
+                guestName = guestName.replace(/%20/g, ' ').replace(/\+/g, ' ');
                 document.getElementById('guest-greeting').innerText = guestName + '!';
             }
         });
@@ -377,4 +379,3 @@
     </script>
 </body>
 </html>
-
